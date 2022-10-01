@@ -6,7 +6,7 @@
     + Nhập SecretKey và AccessKey của AWS vào
 <img src="./img/env.png" />
 - Project chạy trên Port 7979
-<detail close>
+<detail open>
     <summary>
         <h4>Giao diện project</h4>
     </summary>
