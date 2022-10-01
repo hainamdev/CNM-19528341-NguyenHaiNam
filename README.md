@@ -1,4 +1,5 @@
 ### Tài liệu thi giữa kì môn Công Nghệ mới NodeJS - AWS
+- Project chạy trên Port 7979
 <details close>
     <summary>
         Install các thư viện
@@ -14,7 +15,6 @@
     + Hình minh họa
     <img src="./img/env.png" />
 </details> 
-- Project chạy trên Port 7979
 <details close>
     <summary>
         <h3>Giao diện project</h3>
