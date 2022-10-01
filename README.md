@@ -2,13 +2,13 @@
 - Project chạy trên Port 7979
 <details close>
     <summary>
-        Install các thư viện
+        <h3>Install các thư viện</h3>
     </summary>
     <img src="./img/cnm-12.png" />
 </details> 
 <details close>
     <summary>
-        Tạo file .env
+        <h3>Tạo file .env</h3>
     </summary>
     + Đặt tên các biến trong file .env
     + Nhập SecretKey và AccessKey của AWS vào
