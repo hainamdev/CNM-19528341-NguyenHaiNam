@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KT giữa kì</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        .add{
+            margin: 20px;
+            margin-left: 0;
+        }
+        table{
+            border: 2px solid rgb(229, 226, 226);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper container">
+        <h3>Nhà xuất bản ABC</h3>
+        <center>
+            <h1>DANH MỤC CÁC BÀI BÁO</h1>
+        </center>
+        <a href="http://localhost:7979/them-bai-bao" class="add btn btn-primary"> Thêm bài báo </a>
+
+        <table class="table table-striped">
+            <tr>
+                <th class="col">STT</th>
+                <th class="col">Ten bai bao</th>
+                <th class="col">Ten nhom tac gia</th>
+                <th class="col">Chi so ISBN</th>
+                <th class="col">So trang</th>
+                <th class="col">Nam xuat ban</th>
+                <th class="col">Tác vụ</th>
+            </tr>
+            <% var stt = 1; %>
+                <% data.forEach(function(o) {%>
+
+                    <tr>
+                        <td>
+                            <%= stt %>
+                        </td>
+                        <td>
+                            <%= o.name %>
+                        </td>
+                        <td>
+                            <%= o.authors %>
+                        </td>
+                        <td>
+                            <%= o.ISBN %>
+                        </td>
+                        <td>
+                            <%= o.page %>
+                        </td>
+                        <td>
+                            <%= o.year %>
+                        </td>
+                        <td>
+                            <form action="/delete" method="post" enctype="multipart/form-data">
+                                <input type="hidden" value="<%= o.id %>" name= "id">
+                                <input type="submit" value="Xóa bài báo" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    <% stt += 1;  }); %>
+        </table>
+       
+    </div>
+    <!-- <script>
+        var answer = window.confirm("Save data?");
+        if (answer) {
+            //some code
+        }
+        else {
+            //some code
+        }
+    </script> -->
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KT giua ki</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        form{
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgb(132, 180, 222);
+            border-radius: 20px;
+        }
+        form > input{
+            margin: 0 10px 10px  0;
+        }
+        .return{
+            margin: 20px;
+            margin-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper container">
+        <a class="return btn btn-primary" href="http://localhost:7979/" > Quay lại danh sách </a>
+        <center>
+            <h1>Thêm bài báo</h1>
+        </center>
+        <form method="post" enctype="multipart/form-data" action="/" id="form">
+            <input type="text" placeholder="Ten tac pham" name="name" class="form-control" id="name">
+            <small id="lbname" class="text-danger"></small>
+            <input type="text" placeholder="Tac gia" name="authors" class="form-control" id="author">
+            <small id="lbauthor" class="text-danger"></small>
+            <input type="text" placeholder="ISBN" name="ISBN" class="form-control" id="isbn" >
+            <small id="lbisbn" class="text-danger"></small>
+            <input type="text" placeholder="So trang" name="page" class="form-control" id="page">
+            <small id="lbpage" class="text-danger"></small>
+            <input type="text" placeholder="Nam xuat ban" name="year" class="form-control" id="year">
+            <small id="lbyear" class="text-danger"></small>
+            <input type="submit" value="Them bai bao" class="btn btn-success">
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            
+            const checkName = (() => {
+                const name = $("#name");
+                const lbname = $("#lbname");
+                if(name.val() == ""){
+                    lbname.html("Tên tác phẩm không được để trống");
+                    return false;
+                }
+                lbname.html("");
+                return true;
+            });
+            const checkAuthor = (() =>{
+                const author = $("#author");
+                const lbauthor = $("#lbauthor");
+                if(author.val() == ""){
+                    lbauthor.html("Tên tác phẩm không được trống");
+                    return false;
+                }
+                lbauthor.html("");
+                return true;
+            });
+
+            const checkISBN = (() =>{
+                const isbn = $("#isbn");
+                const lbisbn = $("#lbisbn");
+                const re  = /^[0-9]{3}\-[0-9]{3}\-[0-9]{3}$/;
+                if(isbn.val() == ""){
+                    lbisbn.html("ISBN không được trống");
+                    return false;
+                }else if(!re.test(isbn.val())){
+                    lbisbn.html("ISBN là các số nguyên có định dạng: abc-def-xyz");
+                    return false;
+                }
+                lbisbn.html("");
+                return true;
+            });
+
+            const checkPage = (() =>{
+                const page = $("#page");
+                const lbpage = $("#lbpage");
+                const re = /^[0-9]{1,}$/;
+                if(page.val() == ""){
+                    lbpage.html("Số trang không được trống");
+                    return false;
+                }else if(!re.test(page.val())){
+                    lbpage.html("Số trang phải là số nguyên");
+                    return false;
+                }else if(Number(page.val()) <= 0){
+                    lbpage.html("Số trang phải lớn hơn 0");
+                    return false;
+                }
+                lbpage.html("");
+                return true;
+            });
+
+            const checkYear = (() =>{
+                const year = $("#year");
+                const lbyear = $("#lbyear");
+                const re = /^[0-9]{4}$/;
+                if(year.val() == ""){
+                    lbyear.html("Năm không được trống");
+                    return false;
+                }else if(!re.test(year.val())){
+                    lbyear.html("Năm phải là số nguyên có định dạng: yyyy");
+                    return false;
+                }else if(Number(year.val()) > 2022){
+                    lbyear.html("Năm phải nhỏ hơn hoặc bằng năm hiện tại");
+                    return false;
+                }
+                lbyear.html("");
+                return true;
+            });
+
+            $("#year").blur(checkYear);
+            $("#page").blur(checkPage);
+            $("#name").blur(checkName);
+            $("#author").blur(checkAuthor);
+            $("#isbn").blur(checkISBN);
+
+            $("#form").submit((e) =>{
+                if(checkName() || checkAuthor() || checkISBN() || checkPage() || checkYear()){
+                    $(this).submit();
+                }
+                e.preventDefault();
+            });
+        })
+    </script>
+</body>
+</html>
