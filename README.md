@@ -1,20 +1,19 @@
 ### Tài liệu thi giữa kì môn Công Nghệ mới NodeJS - AWS
-- Sau khi clone, thực hiện các thao tác:
-    <details close>
-        <summary>
-            Install các thư viện
-        </summary>
-        <img src="./img/cnm-12.png" />
-    </details> 
-    + Tạo 1 file ".env"
+<details close>
+    <summary>
+        Install các thư viện
+    </summary>
+    <img src="./img/cnm-12.png" />
+</details> 
+<details close>
+    <summary>
+        Tạo file .env
+    </summary>
     + Đặt tên các biến trong file .env
     + Nhập SecretKey và AccessKey của AWS vào
-    <details close>
-        <summary>
-            Hình minh họa
-        </summary>
-        <img src="./img/env.png" />
-    </details> 
+    + Hình minh họa
+    <img src="./img/env.png" />
+</details> 
 - Project chạy trên Port 7979
 <details close>
     <summary>
